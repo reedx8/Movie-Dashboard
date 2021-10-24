@@ -1,5 +1,5 @@
 # Movie-Dashboard
-Dashboard website using IMDB's API: https://rapidapi.com/apidojo/api/imdb8/
+Dashboard website using IMDb's API: https://rapidapi.com/apidojo/api/imdb8/
 
 ## Instructions:
 
