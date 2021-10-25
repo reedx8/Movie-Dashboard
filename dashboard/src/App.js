@@ -1,9 +1,13 @@
 import React from "react";
+import Sidebar from "./components/Sidebar";
+import Homepage from "./components/Homepage";
+import "./App.css";
 
 function App() {
   return (
-    <div>
-      <p>Movie dashboard app</p>
+    <div className="App">
+      <Sidebar />
+      <Homepage />
     </div>
   );
 }
