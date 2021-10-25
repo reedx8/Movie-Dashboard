@@ -1,0 +1,10 @@
+.homepage {
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+p {
+  text-align: center;
+  margin: 50vh 0;
+}
