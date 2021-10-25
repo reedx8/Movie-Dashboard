@@ -1,5 +1,14 @@
+body,
+html {
+  /* removes white spacing around the edges of website */
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
+  margin: 0px;
+  padding: 0px;
 }
