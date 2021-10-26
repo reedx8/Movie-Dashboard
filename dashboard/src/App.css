@@ -2,6 +2,7 @@
   /* global colors */
   --black: black;
   --offBlack: #121212;
+  --red: #f9002b;
 }
 
 body,
@@ -12,7 +13,7 @@ html {
 }
 
 .App {
-  font-family: "Roboto";
+  font-family: "Poppins";
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;

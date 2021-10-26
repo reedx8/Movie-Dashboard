@@ -1,11 +1,19 @@
 .homepage {
-  background-color: var(--black);
+  /* background-color: var(--black); */
+  background-image: linear-gradient(to top right, black 45%, transparent 125%),
+    url("../assets/background.jpg");
+  background-color: black;
+  background-position: 20vw 0;
+  background-size: cover;
+  background-repeat: no-repeat;
   grid-column-start: 2;
   grid-column-end: 5;
   grid-row-start: 1;
   grid-row-end: 2;
 }
+
 p {
   text-align: center;
   margin: 50vh 0;
+  color: white;
 }
