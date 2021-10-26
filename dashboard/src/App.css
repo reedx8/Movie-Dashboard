@@ -1,3 +1,9 @@
+:root {
+  /* global colors */
+  --black: black;
+  --offBlack: #121212;
+}
+
 body,
 html {
   /* removes white spacing around the edges of website */

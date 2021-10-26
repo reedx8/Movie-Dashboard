@@ -1,9 +1,6 @@
-:root {
-  --black: black;
-}
 .sidebar {
-  background-color: var(--black);
-  height: 100vh;
+  background-color: var(--offBlack);
+  /* height: 100vh; */ /* causes scroll bug at bottom if enabled */
 }
 .buttons {
   display: flex;
