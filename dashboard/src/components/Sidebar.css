@@ -1,6 +1,7 @@
 .sidebar {
   background-color: var(--offBlack);
   /* height: 100vh; */ /* causes scroll bug at bottom if enabled */
+  width: 100%;
 }
 .buttons {
   display: flex;
@@ -15,11 +16,10 @@ a {
   color: lightgrey;
   margin: 2vh;
   width: 120px;
-  padding: 10px 90%;
+  /* padding: 10px 90%; */ /* causes sidebar bug in safari */
   letter-spacing: 2px;
 }
 a:hover {
-  /* background-color: white; */
   border-left-style: solid;
   border-color: white;
   background-color: #191919;
