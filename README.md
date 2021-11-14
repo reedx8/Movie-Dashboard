@@ -13,6 +13,7 @@ Dashboard website using IMDb's API: https://rapidapi.com/apidojo/api/imdb8/
 - React
 - webfontloader (https://github.com/typekit/webfontloader)
 - react-icons (https://react-icons.github.io/react-icons/)
+- react-router v5 (https://v5.reactrouter.com/web/guides/quick-start) 
 
 ## Tutorials used:
 
