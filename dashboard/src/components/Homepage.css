@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(8, 1fr);
-  width: 86vw; /* 85/86 over 100vw fixes grid columns overflowing too much */
+  width: 90vw; /* 90 (& not 100vw) fixes grid columns overflowing too much */
   background-image: linear-gradient(to top right, black 45%, transparent 125%),
     url("../assets/background.jpg");
   background-color: black;
@@ -19,6 +19,7 @@
   margin: 5px;
 }
 h2 {
+  font-size: 2vw;
   margin: 0;
   padding: 1px;
 }
@@ -27,7 +28,7 @@ h2 {
   grid-row: 2 / 7;
 }
 .comingSoon {
-  grid-column: 1 / 7;
+  grid-column: 1 / 8;
   grid-row: 7 / 9;
 }
 .topRated {

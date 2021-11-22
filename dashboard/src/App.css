@@ -21,7 +21,7 @@ html {
   padding: 0px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1300px) {
   .App {
     grid-template-columns: 125px 1fr 1fr 1fr;
   }
