@@ -15,7 +15,7 @@ html {
 .App {
   font-family: "Poppins";
   display: grid;
-  grid-template-columns: 250px 1fr 1fr 1fr;
+  grid-template-columns: 200px 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   margin: 0px;
   padding: 0px;
@@ -23,6 +23,6 @@ html {
 
 @media (max-width: 1000px) {
   .App {
-    grid-template-columns: 150px 1fr 1fr 1fr;
+    grid-template-columns: 125px 1fr 1fr 1fr;
   }
 }
