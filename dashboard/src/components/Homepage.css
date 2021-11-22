@@ -18,6 +18,10 @@
   background: rgba(18, 18, 18, 0.7); /* rgba value is offBlack */
   margin: 5px;
 }
+h2 {
+  margin: 0;
+  padding: 1px;
+}
 .mostPopular {
   grid-column: 1 / 6;
   grid-row: 2 / 7;
