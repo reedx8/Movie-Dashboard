@@ -19,9 +19,9 @@
   margin: 5px;
 }
 h2 {
-  font-size: 2vw;
+  font-size: 1.5vw;
   margin: 0;
-  padding: 1px;
+  padding: 3px;
 }
 .mostPopular {
   grid-column: 1 / 6;
