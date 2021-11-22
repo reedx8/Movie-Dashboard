@@ -1,4 +1,13 @@
-import React from 'react'
+import React from 'react';
+
+import {useEffect} from 'react';
+import axios from 'axios';
+
+useEffect(()=>{
+
+    
+
+}, []);
 
 const Showspage = () => {
     return (
