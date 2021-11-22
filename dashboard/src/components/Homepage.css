@@ -42,5 +42,4 @@ h2 {
 .topRated {
   grid-column: 6 / 8;
   grid-row: 2 / 7;
-  margin-right: 5px; /* fixes grid columns overflowing too much for top rated*/
 }
