@@ -3,13 +3,17 @@ import React from 'react';
 import {useEffect} from 'react';
 import axios from 'axios';
 
-useEffect(()=>{
-
-    
-
-}, []);
 
 const Showspage = () => {
+
+
+    useEffect(()=>{
+
+        
+
+    }, []);
+
+    
     return (
         <div>
             <h1>Showpage</h1>
