@@ -1,5 +1,6 @@
 import React from "react";
 import "./Homepage.css";
+import Seemorebutton from "./Seemorebutton";
 
 export default function Homepage() {
   return (
@@ -16,7 +17,14 @@ export default function Homepage() {
 function MostPopular() {
   return (
     <div className="mostPopular">
-      <h2>Most Popular</h2>
+      <div className="header">
+        <div className="title">
+          <h2>Most Popular</h2>
+        </div>
+        <div className="custButton">
+          <Seemorebutton />
+        </div>
+      </div>
     </div>
   );
 }
@@ -24,7 +32,11 @@ function MostPopular() {
 function TopRated() {
   return (
     <div className="topRated">
-      <h2>Top Rated</h2>
+      <div className="header">
+        <div className="title">
+          <h2>Top Rated</h2>
+        </div>
+      </div>
     </div>
   );
 }
@@ -32,7 +44,14 @@ function TopRated() {
 function ComingSoon() {
   return (
     <div className="comingSoon">
-      <h2>Coming Soon</h2>
+      <div className="header">
+        <div className="title">
+          <h2>Coming Soon</h2>
+        </div>
+        <div className="custButton">
+          <Seemorebutton />
+        </div>
+      </div>
     </div>
   );
 }
