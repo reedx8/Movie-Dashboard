@@ -2,7 +2,9 @@
   /* global colors */
   --black: black;
   --offBlack: #121212;
+  --offBlackLt: #1c1c1c;
   --red: #f9002b;
+  --yell: #f5c518;
 }
 
 body,
@@ -23,7 +25,7 @@ html {
   padding: 0px;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1100px) {
   .App {
     grid-template-columns: 125px 1fr 1fr 1fr;
   }
