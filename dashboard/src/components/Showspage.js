@@ -16,7 +16,7 @@ const Showspage = () => {
         q: 'game of thr'
       },
       headers: {
-        'x-rapidapi-host': 'imdb8.p.radidapi.com',
+        'x-rapidapi-host': 'imdb8.p.rapidapi.com',
         'x-rapidapi-key': apikey
 
       }
