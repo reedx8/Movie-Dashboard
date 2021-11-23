@@ -2,12 +2,17 @@ import React from "react";
 import { useEffect } from "react";
 import axios from "axios";
 
-
 import "./Moviespage.css";
 const Moviespage = () => {
   let movies = [
+    "movietitle_1sdfsdf",
+    "movietitle_2",
     "movietitle_1",
     "movietitle_2",
+    "movietitle_1",
+    "movietitle_2",
+    "movietitle_1",
+    "movietitle_2"
   
   ];
 
@@ -37,20 +42,26 @@ const Moviespage = () => {
 
   return (
     <div className="moviespage">
+     
       <div id="searchContainer">
-        <label id="searchlabel" aria-label='search'>Search Movies </label>
+        <label id="searchlabel" forhtml="searchinput" title="searchinput" aria-label='searchinput'>Search Movies </label>
         <input id="searchinput" type="text" name="searchinput" placeholder="Search..." />
        
       </div>
+     
       <section id="newReleases">
-        <h2>New Releases</h2>
+        <h1>New Releases</h1>
         <div id="movieBox">
           {!movies
             ? null
             : movies.map((movie, key) => {
                 return (
                   <div key={key} className="newReleaseMovie">
-                    <h3>{movie}</h3>
+                     <span className="rating">10</span>
+                    <img alt={key + "s poster"}></img>
+                   
+                    <h2 className="yeardisc">Year - Descript</h2>
+                    <h3>{key + "s title"}</h3>
                   </div>
                 );
               })}
@@ -60,7 +71,7 @@ const Moviespage = () => {
         <h2>Top Chart</h2>
         <div id="topChartGridContainer">
           <div className="topchartMovie">
-            <h5>movietitle_1</h5>
+            <p>movietitle_1</p>
           </div>
         </div>
       </aside>
