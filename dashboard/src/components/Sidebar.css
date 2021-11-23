@@ -1,11 +1,10 @@
 .sidebar {
   background-color: var(--offBlack);
-  /* height: 100vh; */ /* causes scroll bug at bottom if enabled */
   width: 100%;
   border-style: solid;
   border-width: 0px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .buttons {
   display: flex;
@@ -16,17 +15,15 @@
   width: 100%;
 }
 a {
+  font-size: 0.7rem;
   text-decoration: none;
   color: lightgrey;
-  margin: 2vh;
-  width: 120px;
-  /* padding: 10px 90%; */ /* causes sidebar bug in safari */
   letter-spacing: 2px;
+  text-transform: uppercase;
 }
 a:hover {
-  color: var(--red);
-  padding-left: 10px;
-  transition: color 0.4s ease, padding-left 0.4s ease;
+  color: var(--yell);
+  transition: color 0.4s ease;
 }
 
 .sidebarIcons {
@@ -34,4 +31,17 @@ a:hover {
   height: 20px;
   vertical-align: bottom;
   margin-right: 5px;
+}
+
+.routeActive {
+  background-color: var(--offBlackLt);
+  border-radius: 5px;
+  color: var(--yell);
+}
+
+.navlink {
+  width: 10vw;
+  /* width: 120px; */
+  padding: 8px 10px;
+  margin: 1vh;
 }
