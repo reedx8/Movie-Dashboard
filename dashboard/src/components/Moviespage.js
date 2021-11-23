@@ -1,7 +1,18 @@
 import React from 'react'
+import {useEffect} from 'react';
+import {axios} from 'axios';
+
+
 import './Moviespage.css';
 const Moviespage = () => {
+
     let movies = ['movietitle_1','movietitle_2', 'movietitle_3', 'movietitle_1','movietitle_2', 'movietitle_3','lastmovie'];
+
+    useEffect(()=>{
+
+    
+
+    }, []);
 
     return (
         <div className="moviespage">
