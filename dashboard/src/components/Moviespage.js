@@ -30,7 +30,9 @@ const Moviespage = () => {
       }
     }).then((response) => {
 
-      alert("response movie page: " + JSON.stringify(response));
+      console.log("response movie page: " + JSON.stringify(response));
+    }).catch((error)=>{
+      console.error("error: " + error);
     })
 
 

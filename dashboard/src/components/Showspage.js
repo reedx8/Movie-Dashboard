@@ -22,7 +22,9 @@ const Showspage = () => {
       }
     }).then((response) => {
 
-      alert("response: " + JSON.stringify(response));
+      console.log("response: " + JSON.stringify(response));
+    }).catch((error)=>{
+      console.error("error: " + error);
     })
 
 
