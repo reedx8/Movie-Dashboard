@@ -135,7 +135,8 @@
     
     grid-row: auto;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 50px 10px
+    grid-template-rows: 1fr 1fr 1fr 50px 10px;
+    color: black;
    
 }
 

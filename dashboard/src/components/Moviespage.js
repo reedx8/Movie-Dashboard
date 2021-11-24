@@ -4,66 +4,91 @@ import axios from "axios";
 
 import "./Moviespage.css";
 const Moviespage = () => {
+
+
   let movies = [];
   let urls = [];
-
-  //let baseUrlComingSoon = 'https://imdb8.p.rapidapi.com/title/get-coming-soon-movies';
-  let baseUrlDetail = 'https://imdb8.p.rapidapi.com/title/get-best-picture-winners';
-  let baseUrl = 'https://imdb8.p.rapidapi.com/title/get-videos';
-  //let apikey = '';
-
   const [ids, setIds] = useState([]);
 
-  useEffect(() => {
-    //shoot for the id list
-    axios.get(baseUrlDetail,{
-     
+  const rockabuy = (time) => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, time);
+    })
+  }
+
+
+  let getMovieData = async (baseUrl, firstmovie) => {
+    
+    const response = axios.get(baseUrl,{
+      params: {
+        tconst: JSON.parse(firstmovie),
+        limit: '8',
+        region: 'US'
+      },
       headers: {
         'x-rapidapi-host': 'imdb8.p.rapidapi.com',
         'x-rapidapi-key': apikey
 
       }
     }).then((response) => {
-
-      console.log("response movie page: " + JSON.stringify(response.data));
-      for(let x = 0; x < 8; x++){
-        movies.push(JSON.stringify(response.data[x].split('/')[2]));
-      }
-      //should be just ids
-      console.log("movies: " + movies);
-      let firstmovie = movies[0];
-      console.log(JSON.parse(firstmovie));
-      for(let x = 0; x < 8; x++){
-        //let newurl = baseUrl + movies[x].split('/')[1];
-        //urls.push(newurl);
-      }
-      //setIds(urls);
-      for(let x = 0; x < 1; x++){
-        //... collect data for each...
-        //make axios call for each id
-        axios.get(baseUrl,{
-          params: {
-            tconst: JSON.parse(firstmovie),
-            limit: '8',
-            region: 'US'
-          },
-          headers: {
-            'x-rapidapi-host': 'imdb8.p.rapidapi.com',
-            'x-rapidapi-key': apikey
-    
-          }
-        }).then((response) => {
-            console.log("secondary data: " + JSON.stringify(response.data));
-            //setIds(...ids, newmovie);
-        }).catch((error)=>{
-            console.error("secondary error: " + error);
-        });
-        
-      }
+        console.log("secondary data: " + JSON.stringify(response.data["resource"].title));
+        setIds(ids => [...ids, [JSON.stringify(response.data["resource"].title)]]);
     }).catch((error)=>{
-      console.error("error: " + error);
-    })
+        console.error("secondary error: " + error);
+    });
 
+
+  }
+
+  //let baseUrlComingSoon = 'https://imdb8.p.rapidapi.com/title/get-coming-soon-movies';
+  let baseUrlDetail = 'https://imdb8.p.rapidapi.com/title/get-best-picture-winners';
+  let baseUrl = 'https://imdb8.p.rapidapi.com/title/get-videos';
+  let apikey = '5bb2b56e53msh67f66570f892479p101960jsn07ab6f964109';
+
+
+  useEffect(() => {
+    //shoot for the id list
+    let originalSearch = async () => {
+      axios.get(baseUrlDetail,{
+      
+        headers: {
+          'x-rapidapi-host': 'imdb8.p.rapidapi.com',
+          'x-rapidapi-key': apikey
+
+        }
+      }).then((response) => {
+
+        console.log("response movie page: " + JSON.stringify(response.data));
+        for(let x = 0; x < 8; x++){
+          movies.push(JSON.stringify(response.data[x].split('/')[2]));
+        }
+        //should be just ids
+        console.log("movies: " + movies);
+        //let firstmovie = movies[0];
+        //console.log(JSON.parse(firstmovie));
+        for(let x = 0; x < 8; x++){
+          //let newurl = baseUrl + movies[x].split('/')[1];
+          //urls.push(newurl);
+        }
+        //setIds(urls);
+        let delayedsearch = async (indexvalue) => {
+          await getMovieData(baseUrl, movies[indexvalue]);
+        }
+        for(let x = 0; x < 8; x++){
+          //... collect data for each...
+          //make axios call for each id
+            setTimeout(()=>{
+              delayedsearch(x);
+
+            }, 200 * x)
+                
+
+        }
+      }).catch((error)=>{
+        console.error("error: " + error);
+      })
+    }
+    originalSearch();
 
   }, []);
 
@@ -79,7 +104,7 @@ const Moviespage = () => {
       <section id="newReleases">
         <h1>New Releases</h1>
         <div id="movieBox" style={{color: "white"}}>
-          {!movies
+          {!ids || ids == undefined
             ? "No movies right now"
             : ids.map((movie, key) => {
                 return (
