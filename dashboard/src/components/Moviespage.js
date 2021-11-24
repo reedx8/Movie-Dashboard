@@ -1,30 +1,22 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 import "./Moviespage.css";
 const Moviespage = () => {
-  let movies = [
-    "movietitle_1sdfsdf",
-    "movietitle_2",
-    "movietitle_1",
-    "movietitle_2",
-    "movietitle_1",
-    "movietitle_2",
-    "movietitle_1",
-    "movietitle_2"
-  
-  ];
+  let movies = [];
+  let urls = [];
 
-  let baseUrl = 'https://imdb8.p.rapidapi.com/auto-complete';
+  let baseUrlComingSoon = 'https://imdb8.p.rapidapi.com/title/get-coming-soon-movies';
+  let baseUrl = 'https://imdb8.p.rapidapi.com/title/get-details';
   let apikey = '79dbda4576msh0d80bf6c42d69b8p12986cjsn0c3250dfa9b7';
 
-  useEffect(() => {
+  const [ids, setIds] = useState([]);
 
-    axios.get(baseUrl,{
-      params: {
-        q: 'game of thr'
-      },
+  useEffect(() => {
+    //shoot for the id list
+    axios.get(baseUrlComingSoon,{
+      
       headers: {
         'x-rapidapi-host': 'imdb8.p.rapidapi.com',
         'x-rapidapi-key': apikey
@@ -32,7 +24,24 @@ const Moviespage = () => {
       }
     }).then((response) => {
 
-      console.log("response movie page: " + JSON.stringify(response));
+      console.log("response movie page: " + JSON.stringify(response.data));
+      for(let x = 0; x < 8; x++){
+        movies.push(JSON.stringify(response.data[x].id.split("/")[2]));
+      }
+      //should be just ids
+      console.log("movies: " + movies);
+     
+      for(let x = 0; x < 8; x++){
+        //let newurl = baseUrl + movies[x].split('/')[1];
+        //urls.push(newurl);
+      }
+      //setIds(urls);
+      for(let x = 0; x < 8; x++){
+        //... collect data for each...
+        //make axios call for each id
+        
+       
+      }
     }).catch((error)=>{
       console.error("error: " + error);
     })
@@ -51,14 +60,14 @@ const Moviespage = () => {
      
       <section id="newReleases">
         <h1>New Releases</h1>
-        <div id="movieBox">
+        <div id="movieBox" style={{color: "white"}}>
           {!movies
-            ? null
-            : movies.map((movie, key) => {
+            ? "No movies right now"
+            : ids.map((movie, key) => {
                 return (
                   <div key={key} className="newReleaseMovie">
                      <span className="rating">10</span>
-                    <img alt={key + "s poster"}></img>
+                    <img alt={key + "s poster " + movie}></img>
                    
                     <h2 className="yeardisc">Year - Descript</h2>
                     <h3>{key + "s title"}</h3>
@@ -67,20 +76,7 @@ const Moviespage = () => {
               })}
         </div>
       </section>
-      <aside id="topChart">
-        <h2>Top Chart</h2>
-        <div id="topChartGridContainer">
-          <div className="topchartMovie">
-            <p>movietitle_1</p>
-          </div>
-        </div>
-      </aside>
-      <section id="comingSoon">
-        <h3>Coming Soon</h3>
-        <div className="comingSoonMovie">
-          <h3>movietitle_1</h3>
-        </div>
-      </section>
+      
     </div>
   );
 };

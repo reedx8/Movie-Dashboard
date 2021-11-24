@@ -55,7 +55,7 @@
 
 #topChart{
     background: rgba(18, 18, 18, 0.7);
-    grid-row: 2 / 6;
+    grid-row: 2 / 7;
     grid-column: 4 / 6;
     border-radius: 10px;
     margin-right: 5px;
@@ -70,10 +70,11 @@
 #newReleases{
     background: rgba(18, 18, 18, 0.7);
    
-    grid-row: 2 / 6;
-    grid-column: 1 / 4;
+    grid-row: 2 / 7;
+    grid-column: 1 / 6;
     border-radius: 10px;
     margin-left: 5px;
+    margin-right: 10px;
     
     
 }
@@ -81,7 +82,8 @@
 #newReleases > h1 {
     margin: 3px;
     padding: 0px;
-    font-size: 1.5vw;
+    font-size: 24px;
+    color: lightgrey;;
 
 }
 .yeardisc{
@@ -96,12 +98,21 @@
 #newReleases > h2 {
     margin: 3px;
     padding: 0px;
-    font-size: 1.5vw;
-    color: rgba(18, 18, 18, 0.7);
-    overflow: hidden;
+    font-size: 24px;
+   
+  
 
 }
 
+
+#topChart > h2 {
+    margin: 3px;
+    padding: 0px;
+    font-size: 24px;
+   
+    overflow: hidden;
+
+}
 
 
 #movieBox{
@@ -118,10 +129,10 @@
     min-height: 275px;
   
     width: 15%;
-    min-width: 175px;
-    overflow: hidden;
+    min-width: 250px;
+    overflow-x: hidden;
     border-radius: 5px;
-    font-size: 1.5vw;
+    
     grid-row: auto;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 50px 10px
@@ -131,25 +142,25 @@
 .rating{
     grid-row: 1;
     display: grid;
-    width:45px;
+    width:35px;
+    font-size: 20px;
     margin: 3px;
-    height: 45px;
-    line-height: 45px;
+    height: 35px;
+    line-height: 35px;
     background-color: var(--yell);
     text-align: center;
     border: 1px solid black;
     border-radius: 50%;
     justify-self: right;
-    
-
-    
 }
-
+img{
+    overflow-x: hidden;
+}
 h3 {
     grid-row: 4;
     margin: 3px;
     padding: 0px;
-    font-size: 90%;
+   
   
     color: rgba(18, 18, 18, 0.7);
    
@@ -165,13 +176,95 @@ h3 {
     margin-left: 5px;
     margin-bottom: 5px;
     background: rgba(18, 18, 18, 0.7);
-    color: white; 
+   
 }
 
 #comingSoon > h3 {
    
-    font-size: 1.3vw;
-    color: white;
   
+    color: white;
+    font-size: 16px;
+  
+
+}
+
+@media only screen and (max-width: 1300px){
+
+    #movieBox{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+}
+
+
+@media only screen and (max-width: 860px){
+
+    #movieBox{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .moviespage{
+        background-color: #2d3436;
+        background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+        display: grid;
+        font-family: "Poppins";
+        grid-column: 2 / 5;
+        grid-row: 1 / 2;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 180px repeat(5, 1fr);
+        width: 100%;
+        height: 100%;
+        grid-gap: 15px;
+    }    
+
+}
+
+@media only screen and (max-width: 650px){
+
+    .moviespage{
+        background-color: #2d3436;
+        background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+        display: grid;
+        font-family: "Poppins";
+        grid-column: 2 / 5;
+        grid-row: 1 / 2;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 200px repeat(5, 1fr);
+        width: 100%;
+        height: 100%;
+        grid-gap: 15px;
+    }    
+
+
+    #searchContainer{
+        background: rgba(18, 18, 18, 0.7);
+        display: grid;
+        align-items: center;
+        grid-row: 1 / 2;
+        grid-column: 1 / 6;
+        border-radius: 15px;
+        height: 200px;
+    } 
+    
+    
+    #searchlabel{
+        color: lightgrey;
+        margin-left: 10px;
+        line-height: 100%;
+        font-size: 24px;
+        grid-row: 1/2;
+        grid-column: 1/2;
+        
+        
+    
+    }
+    #movieBox{
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 75%;
+        margin: 0px auto;
+    }
 
 }
