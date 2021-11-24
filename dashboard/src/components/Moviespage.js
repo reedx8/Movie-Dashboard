@@ -10,7 +10,7 @@ const Moviespage = () => {
   //let baseUrlComingSoon = 'https://imdb8.p.rapidapi.com/title/get-coming-soon-movies';
   let baseUrlDetail = 'https://imdb8.p.rapidapi.com/title/get-best-picture-winners';
   let baseUrl = 'https://imdb8.p.rapidapi.com/title/get-videos';
-  let apikey = '5bb2b56e53msh67f66570f892479p101960jsn07ab6f964109';
+  //let apikey = '';
 
   const [ids, setIds] = useState([]);
 
