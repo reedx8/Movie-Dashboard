@@ -62,15 +62,9 @@ const Moviespage = () => {
         for(let x = 0; x < 8; x++){
           movies.push(JSON.stringify(response.data[x].split('/')[2]));
         }
-        //should be just ids
-        console.log("movies: " + movies);
-        //let firstmovie = movies[0];
-        //console.log(JSON.parse(firstmovie));
-        for(let x = 0; x < 8; x++){
-          //let newurl = baseUrl + movies[x].split('/')[1];
-          //urls.push(newurl);
-        }
-        //setIds(urls);
+       
+     
+
         let delayedsearch = async (indexvalue) => {
           await getMovieData(baseUrl, movies[indexvalue]);
         }
