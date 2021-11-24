@@ -7,16 +7,17 @@ const Moviespage = () => {
   let movies = [];
   let urls = [];
 
-  let baseUrlComingSoon = 'https://imdb8.p.rapidapi.com/title/get-coming-soon-movies';
-  let baseUrl = 'https://imdb8.p.rapidapi.com/title/get-details';
-  let apikey = '79dbda4576msh0d80bf6c42d69b8p12986cjsn0c3250dfa9b7';
+  //let baseUrlComingSoon = 'https://imdb8.p.rapidapi.com/title/get-coming-soon-movies';
+  let baseUrlDetail = 'https://imdb8.p.rapidapi.com/title/get-best-picture-winners';
+  let baseUrl = 'https://imdb8.p.rapidapi.com/title/get-videos';
+  let apikey = '5bb2b56e53msh67f66570f892479p101960jsn07ab6f964109';
 
   const [ids, setIds] = useState([]);
 
   useEffect(() => {
     //shoot for the id list
-    axios.get(baseUrlComingSoon,{
-      
+    axios.get(baseUrlDetail,{
+     
       headers: {
         'x-rapidapi-host': 'imdb8.p.rapidapi.com',
         'x-rapidapi-key': apikey
@@ -26,21 +27,38 @@ const Moviespage = () => {
 
       console.log("response movie page: " + JSON.stringify(response.data));
       for(let x = 0; x < 8; x++){
-        movies.push(JSON.stringify(response.data[x].id.split("/")[2]));
+        movies.push(JSON.stringify(response.data[x].split('/')[2]));
       }
       //should be just ids
       console.log("movies: " + movies);
-     
+      let firstmovie = movies[0];
+      console.log(JSON.parse(firstmovie));
       for(let x = 0; x < 8; x++){
         //let newurl = baseUrl + movies[x].split('/')[1];
         //urls.push(newurl);
       }
       //setIds(urls);
-      for(let x = 0; x < 8; x++){
+      for(let x = 0; x < 1; x++){
         //... collect data for each...
         //make axios call for each id
+        axios.get(baseUrl,{
+          params: {
+            tconst: JSON.parse(firstmovie),
+            limit: '8',
+            region: 'US'
+          },
+          headers: {
+            'x-rapidapi-host': 'imdb8.p.rapidapi.com',
+            'x-rapidapi-key': apikey
+    
+          }
+        }).then((response) => {
+            console.log("secondary data: " + JSON.stringify(response.data));
+            //setIds(...ids, newmovie);
+        }).catch((error)=>{
+            console.error("secondary error: " + error);
+        });
         
-       
       }
     }).catch((error)=>{
       console.error("error: " + error);
