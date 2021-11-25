@@ -29,10 +29,12 @@
 }
 
 h2 {
-  font-size: 1.5vw;
+  font-size: 1.4rem;
   margin: 0;
   padding-left: 20px;
-  color: lightgrey;
+  font-weight: 100;
+  letter-spacing: 0.4vw;
+  color: var(--yell);
 }
 .mostPopular {
   grid-column: 1 / 6;
@@ -42,7 +44,8 @@ h2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  margin-left: 20px;
 }
 .comingSoon {
   grid-column: 1 / 8;
@@ -83,7 +86,13 @@ h2 {
   font-size: 0.9rem;
   font-weight: 500;
   color: white;
+  white-space: nowrap;
+  width: 120px;
+  /* height: 40px; */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 .movieGenre {
   font-size: 0.8rem;
   color: grey;

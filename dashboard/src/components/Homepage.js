@@ -47,9 +47,9 @@ function MostPopular() {
         console.error("Most Popular Axios Call ERROR: ", error);
       }
 
-      // Now just get the first 5 movies IDs from the popular movies array
+      // Now just get the first movies IDs from the popular movies array, up to maxMovies
       let i = 0,
-        maxMovies = 5,
+        maxMovies = 8,
         temp = [];
       while (i < maxMovies && data && i < data.length) {
         data[i] = data[i].substring(7);
@@ -60,12 +60,22 @@ function MostPopular() {
       console.log(temp);
       setPopMovies(temp);
 
+      // Then get string of ids to pass to APIs params
+      let ids = () => {
+        let tempIds = temp[0];
+        for (let i = 1; i < temp.length; i++) {
+          tempIds = tempIds + "&ids=" + temp[i];
+        }
+        return tempIds;
+      };
+
       // Now get the movie info for each movie ID
       const options2 = {
         method: "GET",
         url: "https://imdb8.p.rapidapi.com/title/get-meta-data",
         params: {
-          ids: `${temp[0]}&ids=${temp[1]}&ids=${temp[2]}&ids=${temp[3]}&ids=${temp[4]}`,
+          // ids: `${temp[0]}&ids=${temp[1]}&ids=${temp[2]}&ids=${temp[3]}&ids=${temp[4]}&ids=${temp[5]}&ids=${temp[6]}&ids=${temp[7]}`,
+          ids: ids(),
           region: "US",
         },
         headers: {
