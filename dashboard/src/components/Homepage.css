@@ -52,3 +52,8 @@ h2 {
   flex-direction: row;
   justify-content: space-between;
 }
+
+img {
+  /* width: 105px; */
+  /* height: 301px; */
+}

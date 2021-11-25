@@ -45,10 +45,11 @@ function MostPopular() {
         console.error("Most Popular Axios Call ERROR: ", error);
       }
 
-      // Now just get the first 8 movies IDs from the popular movies array
+      // Now just get the first 5 movies IDs from the popular movies array
       let i = 0,
+        maxMovies = 5,
         temp = [];
-      while (i < 8 && i < data.length) {
+      while (i < maxMovies && i < data.length && data) {
         data[i] = data[i].substring(7);
         data[i] = data[i].substring(0, data[i].length - 1);
         temp.push(data[i]);
@@ -74,7 +75,7 @@ function MostPopular() {
         const response2 = await axios(options2);
         data2 = await response2.data;
         console.log("Raw data: ", data2);
-        // setMovieInfo(data2);
+        setMovieInfo(data2);
       } catch (error) {
         console.error("Movie Info 2 Axios Call ERROR: ", error);
       }
@@ -85,7 +86,7 @@ function MostPopular() {
   }, []);
 
   return (
-    <div className="mostPopular">
+    <section className="mostPopular">
       <div className="header">
         <div className="title">
           <h2>Most Popular</h2>
@@ -95,27 +96,28 @@ function MostPopular() {
         </div>
       </div>
       <div className="content">
-        <p>{popMovies}</p>
+        {movieInfo ? <DisplayFilms props={movieInfo} /> : "Loading..."}
+        {/* <p>{popMovies}</p> */}
       </div>
-    </div>
+    </section>
   );
 }
 
 function TopRated() {
   return (
-    <div className="topRated">
+    <section className="topRated">
       <div className="header">
         <div className="title">
           <h2>Top Rated</h2>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
 function ComingSoon() {
   return (
-    <div className="comingSoon">
+    <section className="comingSoon">
       <div className="header">
         <div className="title">
           <h2>Coming Soon</h2>
@@ -124,6 +126,51 @@ function ComingSoon() {
           <Seemorebutton />
         </div>
       </div>
-    </div>
+    </section>
   );
+}
+function DisplayFilms(props) {
+  let data = [];
+  function processData(props) {
+    let i = 0;
+    for (const key in props) {
+      data[i] = [
+        props[key].title.image.url,
+        props[key].title.title,
+        props[key].genres[0],
+      ];
+      ++i;
+    }
+    console.log(data);
+  }
+  // function display(props) {
+  // for (const key in props) {
+  // console.log(props[key].title.title);
+
+  /*
+      return (
+        <div className="movieInfo">
+          <div className="movieInfoPoster">
+            <img
+              src={props[key].title.image.url}
+              alt="poster"
+              style={{ width: "9vw", maxWidth: "150px", minWidth: "70px" }}
+            />
+          </div>
+          <h3>{props[key].title.title}</h3>
+          <p>{props[key].genres[0]}</p>
+          <p>
+            {props[key].ratings.canRate
+              ? `${props[key].ratings.rating}/10`
+              : ""}
+          </p>
+        </div>
+      );
+      */
+  // }
+  // }
+  processData(props.props);
+  // display(props.props);
+
+  return <></>;
 }
