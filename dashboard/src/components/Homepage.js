@@ -34,8 +34,7 @@ function MostPopular() {
         headers: {
           "x-rapidapi-host": "imdb8.p.rapidapi.com",
           "x-rapidapi-key":
-            "ffabe7db58msh55b8eb06a403b8ap1ae6a3jsn37e6951ebe1b",
-          // "79dbda4576msh0d80bf6c42d69b8p12986cjsn0c3250dfa9b7",
+            "923c367cdbmsh6ea785496f3c985p1af000jsn90cc9c8b8e53",
         },
       };
       let data;
