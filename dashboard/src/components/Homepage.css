@@ -45,6 +45,7 @@ h2 {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: baseline;
   margin-left: 20px;
 }
 .comingSoon {
