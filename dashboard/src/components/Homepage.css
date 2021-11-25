@@ -56,6 +56,13 @@ h2 {
   flex-basis: 100px;
   flex-grow: 10px;
   flex-shrink: 10px;
+  padding: 8px;
+  /* border-radius: 5px; */
+  transition: transform 0.4s;
+}
+.movieInfo:hover {
+  /* background-color: var(--offBlackLt); */
+  transform: scale(1.2);
 }
 
 .header {
@@ -85,7 +92,13 @@ h2 {
   font-size: 0.7rem;
   color: grey;
 }
+.ratingCount {
+  font-size: 0.7rem;
+  color: grey;
+  margin-left: 2px;
+}
 .starIcon {
   color: var(--yell);
   margin-right: 2px;
+  vertical-align: middle;
 }

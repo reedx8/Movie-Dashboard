@@ -88,14 +88,19 @@ function MostPopular() {
       // Turn movie object into an array
       let temp2 = [];
       let j = 0;
-      let rating = 0;
       for (const key in data2) {
-        if (data2[key].ratings.canRate) rating = data2[key].ratings.rating;
+        let rating = 0;
+        let ratingCount = 0;
+        if (data2[key].ratings.canRate) {
+          rating = data2[key].ratings.rating;
+          ratingCount = data2[key].ratings.ratingCount;
+        }
         temp2[j] = [
           data2[key].title.image.url,
           data2[key].title.title,
           data2[key].genres[0] + " / " + data2[key].genres[1],
           rating,
+          parseInt(ratingCount).toLocaleString("en-US"),
         ];
         ++j;
       }
@@ -133,6 +138,7 @@ function MostPopular() {
                         width: "9vw",
                         maxWidth: "130px",
                         minWidth: "70px",
+                        borderRadius: "3px",
                       }}
                     />
                   </div>
@@ -144,6 +150,7 @@ function MostPopular() {
                     </IconContext.Provider>
                     {movie[3]}
                     <span className="totRating">/10</span>
+                    <span className="ratingCount">({movie[4]})</span>
                   </p>
                 </div>
               );
