@@ -62,7 +62,10 @@ function MostPopular() {
       const options2 = {
         method: "GET",
         url: "https://imdb8.p.rapidapi.com/title/get-meta-data",
-        params: { ids: `${temp[0]}&ids=${temp[1]}`, region: "US" },
+        params: {
+          ids: `${temp[0]}&ids=${temp[1]}&ids=${temp[2]}&ids=${temp[3]}&ids=${temp[4]}`,
+          region: "US",
+        },
         headers: {
           "x-rapidapi-host": "imdb8.p.rapidapi.com",
           "x-rapidapi-key":
@@ -87,7 +90,7 @@ function MostPopular() {
         temp2[j] = [
           data2[key].title.image.url,
           data2[key].title.title,
-          data2[key].genres[0],
+          data2[key].genres[0] + " / " + data2[key].genres[1],
         ];
         ++j;
       }
@@ -117,19 +120,19 @@ function MostPopular() {
               // return (<img key={index} src={movie[0]} alt="poster" />);
               return (
                 <div className="movieInfo" key={index}>
-                  <div className="movieInfoPoster">
+                  <div className="moviePoster">
                     <img
                       src={movie[0]}
                       alt="poster"
                       style={{
                         width: "9vw",
-                        maxWidth: "150px",
+                        maxWidth: "130px",
                         minWidth: "70px",
                       }}
                     />
                   </div>
-                  <h3>{movie[1]}</h3>
-                  <p>{movie[2]}</p>
+                  <h3 className="movieTitle">{movie[1]}</h3>
+                  <p className="movieGenre">{movie[2]}</p>
                 </div>
               );
             })
@@ -165,6 +168,7 @@ function ComingSoon() {
     </section>
   );
 }
+
 function DisplayFilms({ props }) {
   function processData(props) {
     props.forEach((e) => {
