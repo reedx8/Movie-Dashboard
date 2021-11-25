@@ -67,7 +67,8 @@ h2 {
 
 .movieTitle,
 .movieGenre,
-.moviePoster {
+.moviePoster,
+.movieRating {
   margin: 0;
   padding: 0;
 }
@@ -79,4 +80,12 @@ h2 {
 .movieGenre {
   font-size: 0.8rem;
   color: grey;
+}
+.totRating {
+  font-size: 0.7rem;
+  color: grey;
+}
+.starIcon {
+  color: var(--yell);
+  margin-right: 2px;
 }

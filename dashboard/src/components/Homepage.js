@@ -1,6 +1,8 @@
 import React from "react";
 import "./Homepage.css";
 import Seemorebutton from "./Seemorebutton";
+import { IconContext } from "react-icons";
+import { AiFillStar } from "react-icons/ai";
 const axios = require("axios");
 
 export default function Homepage() {
@@ -86,11 +88,14 @@ function MostPopular() {
       // Turn movie object into an array
       let temp2 = [];
       let j = 0;
+      let rating = 0;
       for (const key in data2) {
+        if (data2[key].ratings.canRate) rating = data2[key].ratings.rating;
         temp2[j] = [
           data2[key].title.image.url,
           data2[key].title.title,
           data2[key].genres[0] + " / " + data2[key].genres[1],
+          rating,
         ];
         ++j;
       }
@@ -133,6 +138,13 @@ function MostPopular() {
                   </div>
                   <h3 className="movieTitle">{movie[1]}</h3>
                   <p className="movieGenre">{movie[2]}</p>
+                  <p className="movieRating">
+                    <IconContext.Provider value={{ className: "starIcon" }}>
+                      <AiFillStar />
+                    </IconContext.Provider>
+                    {movie[3]}
+                    <span className="totRating">/10</span>
+                  </p>
                 </div>
               );
             })
