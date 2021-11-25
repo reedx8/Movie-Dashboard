@@ -110,6 +110,7 @@ function MostPopular() {
         </div>
       </div>
       <div className="content">
+        {/* Couldnt pass props to DisplayFilms component, error -> movieInfo[0] is null */}
         {/* {movieInfo ? <DisplayFilms props={movieInfo} /> : "Loading..."} */}
         {movieInfo
           ? movieInfo.map((movie, index) => {
