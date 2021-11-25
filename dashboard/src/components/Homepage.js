@@ -17,7 +17,7 @@ export default function Homepage() {
 
 function MostPopular() {
   const [popMovies, setPopMovies] = React.useState([null]);
-  const [movieInfo, setMovieInfo] = React.useState(null);
+  const [movieInfo, setMovieInfo] = React.useState([]);
 
   React.useEffect(() => {
     async function getData() {
@@ -49,7 +49,7 @@ function MostPopular() {
       let i = 0,
         maxMovies = 5,
         temp = [];
-      while (i < maxMovies && i < data.length && data) {
+      while (i < maxMovies && data && i < data.length) {
         data[i] = data[i].substring(7);
         data[i] = data[i].substring(0, data[i].length - 1);
         temp.push(data[i]);
@@ -75,10 +75,24 @@ function MostPopular() {
         const response2 = await axios(options2);
         data2 = await response2.data;
         console.log("Raw data: ", data2);
-        setMovieInfo(data2);
+        // setMovieInfo(data2);
       } catch (error) {
         console.error("Movie Info 2 Axios Call ERROR: ", error);
       }
+
+      // Turn movie object into an array
+      let temp2 = [];
+      let j = 0;
+      for (const key in data2) {
+        temp2[j] = [
+          data2[key].title.image.url,
+          data2[key].title.title,
+          data2[key].genres[0],
+        ];
+        ++j;
+      }
+      console.log("TEMP2: ", temp2);
+      setMovieInfo(temp2);
     }
 
     getData();
@@ -96,8 +110,29 @@ function MostPopular() {
         </div>
       </div>
       <div className="content">
-        {movieInfo ? <DisplayFilms props={movieInfo} /> : "Loading..."}
-        {/* <p>{popMovies}</p> */}
+        {/* {movieInfo ? <DisplayFilms props={movieInfo} /> : "Loading..."} */}
+        {movieInfo
+          ? movieInfo.map((movie, index) => {
+              // return (<img key={index} src={movie[0]} alt="poster" />);
+              return (
+                <div className="movieInfo" key={index}>
+                  <div className="movieInfoPoster">
+                    <img
+                      src={movie[0]}
+                      alt="poster"
+                      style={{
+                        width: "9vw",
+                        maxWidth: "150px",
+                        minWidth: "70px",
+                      }}
+                    />
+                  </div>
+                  <h3>{movie[1]}</h3>
+                  <p>{movie[2]}</p>
+                </div>
+              );
+            })
+          : "Loading..."}
       </div>
     </section>
   );
@@ -129,48 +164,42 @@ function ComingSoon() {
     </section>
   );
 }
-function DisplayFilms(props) {
-  let data = [];
+function DisplayFilms({ props }) {
   function processData(props) {
-    let i = 0;
-    for (const key in props) {
-      data[i] = [
-        props[key].title.image.url,
-        props[key].title.title,
-        props[key].genres[0],
-      ];
-      ++i;
-    }
-    console.log(data);
+    props.forEach((e) => {
+      // if (e) console.log(e[0], e[1]);
+      return <h3>e[0]</h3>;
+    });
   }
-  // function display(props) {
-  // for (const key in props) {
-  // console.log(props[key].title.title);
 
-  /*
-      return (
-        <div className="movieInfo">
-          <div className="movieInfoPoster">
-            <img
-              src={props[key].title.image.url}
-              alt="poster"
-              style={{ width: "9vw", maxWidth: "150px", minWidth: "70px" }}
-            />
-          </div>
-          <h3>{props[key].title.title}</h3>
-          <p>{props[key].genres[0]}</p>
-          <p>
-            {props[key].ratings.canRate
-              ? `${props[key].ratings.rating}/10`
-              : ""}
-          </p>
-        </div>
-      );
-      */
-  // }
-  // }
-  processData(props.props);
-  // display(props.props);
+  // setData(props);
+  // processData(props);
 
-  return <></>;
+  return (
+    <>
+      {/* {props ? processData(props) : "Loading..."} */}
+      {processData(props)}
+      {/* {props.forEach((film) => {
+        if (film) {
+          return (
+            <div className="movieInfo">
+              <div className="movieInfoPoster">
+                <img
+                  src={film[0]}
+                  alt="poster"
+                  style={{
+                    width: "9vw",
+                    maxWidth: "150px",
+                    minWidth: "70px",
+                  }}
+                />
+              </div>
+              <h3>{film[1]}</h3>
+              <p>{film[2]}</p>
+            </div>
+          );
+        }
+      })} */}
+    </>
+  );
 }
