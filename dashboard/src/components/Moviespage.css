@@ -110,15 +110,25 @@ h2{
 .newReleaseMovie{
     
     background: linear-gradient(.38turn,#000000 88%,#f5c518); 
-    width: 15%;
+    
     min-width: 250px;
-    overflow-x: hidden;
+   
     border-radius: 5px;    
     grid-row: auto;
     display: grid;  
     color: lightgrey;
-   
+    transition-property: width;
+
 }
+
+.newReleaseMovie:hover{
+    
+    cursor: pointer;
+    border: 5px solid var(--yell);
+    border-radius: 5px;
+ }
+
+
 
 .rating{
     position: absolute;
