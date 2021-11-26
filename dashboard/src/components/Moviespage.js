@@ -1,24 +1,23 @@
+/*Author: Austin Britton*/
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-
 
 import "./Moviespage.css";
 const Moviespage = () => {
-  let movies = [
-    "movietitle_1",
-    "movietitle_2",
+
+
+  let movies = [];
   
-  ];
+  const [movieObjects, setMovieObjects] = useState([]);
 
-  let baseUrl = 'https://imdb8.p.rapidapi.com/auto-complete';
-  let apikey = '79dbda4576msh0d80bf6c42d69b8p12986cjsn0c3250dfa9b7';
-
-  useEffect(() => {
-
-    axios.get(baseUrl,{
+  let getMovieData = async (baseUrl, movieid) => {
+    
+    const response = axios.get(baseUrl,{
       params: {
-        q: 'game of thr'
+        tconst: JSON.parse(movieid),
+        limit: '8',
+        region: 'US'
       },
       headers: {
         'x-rapidapi-host': 'imdb8.p.rapidapi.com',
@@ -26,52 +25,82 @@ const Moviespage = () => {
 
       }
     }).then((response) => {
-
-      console.log("response movie page: " + JSON.stringify(response));
+        let newobject = {
+          title: JSON.parse(JSON.stringify(response.data["resource"].title)),
+          imgsrc: response.data["resource"].image.url,
+          year: JSON.stringify(response.data["resource"].year),
+          type: JSON.parse(JSON.stringify(response.data["resource"].titleType))
+        }  
+        setMovieObjects(movieObjects => [...movieObjects, newobject]);
     }).catch((error)=>{
-      console.error("error: " + error);
-    })
+        console.error("secondary error: " + error);
+    });
+  }
+
+  let baseUrlDetail = 'https://imdb8.p.rapidapi.com/title/get-best-picture-winners';
+ 
+  let baseUrl = 'https://imdb8.p.rapidapi.com/title/get-videos';
+  let apikey = '5bb2b56e53msh67f66570f892479p101960jsn07ab6f964109';
 
 
+  useEffect(() => {
+    //shoot for the id list
+    let originalSearch = async () => {
+      axios.get(baseUrlDetail,{
+      
+        headers: {
+          'x-rapidapi-host': 'imdb8.p.rapidapi.com',
+          'x-rapidapi-key': apikey
+
+        }
+      }).then((response) => {
+        console.log(JSON.stringify(response));
+        for(let x = 0; x < 8; x++){
+          movies.push(JSON.stringify(response.data[x].split('/')[2]));
+        }
+
+        let delayedsearch = async (indexvalue) => {
+          await getMovieData(baseUrl, movies[indexvalue]);
+        }
+
+        for(let x = 0; x < 8; x++){
+            setTimeout(()=>{
+              delayedsearch(x);
+
+            }, 500 * x)
+        }
+      }).catch((error)=>{
+        console.error("error: " + error);
+      })
+    }
+    originalSearch();
   }, []);
 
   return (
     <div className="moviespage">
       <div id="searchContainer">
-        <label id="searchlabel" aria-label='search'>Search Movies </label>
+        <label id="searchlabel" forhtml="searchinput" title="searchinput" aria-label='searchinput'>Search Movies </label>
         <input id="searchinput" type="text" name="searchinput" placeholder="Search..." />
-       
       </div>
       <section id="newReleases">
-        <h2>New Releases</h2>
-        <div id="movieBox">
-          {!movies
-            ? null
-            : movies.map((movie, key) => {
+        <h1>Best Pictures (Top 8)</h1>
+        <div id="movieBox" style={{color: "white"}}>
+          {!movieObjects || movieObjects == undefined
+            ? "No movies right now"
+            : movieObjects.map((movie, key) => {
                 return (
                   <div key={key} className="newReleaseMovie">
-                    <h3>{movie}</h3>
+                    <span className="rating">{key + 1}</span>
+                    <img className="newReleaseImg" src={movie.imgsrc} alt={key + "s poster"}></img>              
+                    <h2 className="yeardisc">{movie.year} - {movie.type}</h2>
+                    <h3 className="classich3">{movie.title}</h3>
                   </div>
                 );
               })}
         </div>
       </section>
-      <aside id="topChart">
-        <h2>Top Chart</h2>
-        <div id="topChartGridContainer">
-          <div className="topchartMovie">
-            <h5>movietitle_1</h5>
-          </div>
-        </div>
-      </aside>
-      <section id="comingSoon">
-        <h3>Coming Soon</h3>
-        <div className="comingSoonMovie">
-          <h3>movietitle_1</h3>
-        </div>
-      </section>
+      
     </div>
   );
 };
-
 export default Moviespage;
