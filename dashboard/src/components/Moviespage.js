@@ -1,9 +1,11 @@
+/*Author: Austin Britton*/
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 import "./Moviespage.css";
 const Moviespage = () => {
+
 
   let movies = [];
   
@@ -33,11 +35,10 @@ const Moviespage = () => {
     }).catch((error)=>{
         console.error("secondary error: " + error);
     });
-
-
   }
 
   let baseUrlDetail = 'https://imdb8.p.rapidapi.com/title/get-best-picture-winners';
+ 
   let baseUrl = 'https://imdb8.p.rapidapi.com/title/get-videos';
   let apikey = '5bb2b56e53msh67f66570f892479p101960jsn07ab6f964109';
 
@@ -53,7 +54,7 @@ const Moviespage = () => {
 
         }
       }).then((response) => {
-
+        console.log(JSON.stringify(response));
         for(let x = 0; x < 8; x++){
           movies.push(JSON.stringify(response.data[x].split('/')[2]));
         }
@@ -63,21 +64,16 @@ const Moviespage = () => {
         }
 
         for(let x = 0; x < 8; x++){
-          //... collect data for each...
-          //make axios call for each id
             setTimeout(()=>{
               delayedsearch(x);
 
             }, 500 * x)
-                
-
         }
       }).catch((error)=>{
         console.error("error: " + error);
       })
     }
     originalSearch();
-
   }, []);
 
   return (
