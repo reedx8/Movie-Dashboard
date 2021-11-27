@@ -34,7 +34,7 @@ const Showspage = () => {
               year: JSON.stringify(response.data["resource"].year),
               type: JSON.parse(JSON.stringify(response.data["resource"].titleType))
             }  
-            setMovieObjects(showsObjects => [...showsObjects, newobject]);
+            setShowsObjects(showsObjects => [...showsObjects, newobject]);
         }).catch((error)=>{
             console.error("secondary error: " + error);
         });
