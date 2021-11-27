@@ -1,9 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
-//import axios from "axios";
+import axios from "axios";
 
 import "./Showspage.css";
-
 
 
 const Showspage = () => {
@@ -11,9 +10,13 @@ const Showspage = () => {
     
     const [showsObjects, setShowsObjects] = useState([]);
 
-    let getShowData = async (baseShowUrl, showid) => {
+    let baseUrl = 'https://imdb8.p.rapidapi.com/title/get-videos';
+    let baseShowUrl = 'https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows';
+    let apikey = '5bb2b56e53msh67f66570f892479p101960jsn07ab6f964109';
+
+    let getShowData = async (baseUrl, showid) => {
     
-        const response = axios.get(baseShowUrl,{
+        const response = axios.get(baseUrl,{
           params: {
             tconst: JSON.parse(showid),
             limit: '8',
