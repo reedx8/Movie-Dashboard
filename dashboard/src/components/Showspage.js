@@ -12,7 +12,7 @@ const Showspage = () => {
 
     let baseUrl = 'https://imdb8.p.rapidapi.com/title/get-videos';
     let baseShowUrl = 'https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows';
-    let apikey = '5bb2b56e53msh67f66570f892479p101960jsn07ab6f964109';
+    let apikey = '0d06046b1emsh0ee30cdd2f84aa0p181203jsn4b2a464c1844';
 
     let getShowData = async (baseUrl, showid) => {
     
