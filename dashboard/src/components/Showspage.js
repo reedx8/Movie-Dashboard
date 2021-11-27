@@ -8,25 +8,40 @@ import "./Showspage.css";
 
 const Showspage = () => {
 
+    
     const [showsObjects, setShowsObjects] = useState([]);
-    let showObject = {
-        title: "",
-        year: "", 
-        imgsrc: "",
-        type: ""
+
+    let getShowData = async (baseUrl, showid) => {
+    
+        const response = axios.get(baseUrl,{
+          params: {
+            tconst: JSON.parse(showid),
+            limit: '8',
+            region: 'US'
+          },
+          headers: {
+            'x-rapidapi-host': 'imdb8.p.rapidapi.com',
+            'x-rapidapi-key': apikey
+    
+          }
+        }).then((response) => {
+            let newobject = {
+              title: JSON.parse(JSON.stringify(response.data["resource"].title)),
+              imgsrc: response.data["resource"].image.url,
+              year: JSON.stringify(response.data["resource"].year),
+              type: JSON.parse(JSON.stringify(response.data["resource"].titleType))
+            }  
+            setMovieObjects(showsObjects => [...showsObjects, newobject]);
+        }).catch((error)=>{
+            console.error("secondary error: " + error);
+        });
     }
 
 
     useEffect(()=>{
         //proper api calls
 
-        let newShow = showObject;
-        newShow.title = "test show";
-        newShow.year = "1993";
-        newShow.type = "horror";
-        newShow.imgsrc = "";
-
-        setShowsObjects(showsObjects => [...showsObjects, newShow]);
+       
     }, []);
 
     return (
