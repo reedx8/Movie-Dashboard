@@ -7,7 +7,7 @@ import "./Showspage.css";
 
 const Showspage = () => {
 
-    
+    let shows = [];
     const [showsObjects, setShowsObjects] = useState([]);
 
     let baseUrl = 'https://imdb8.p.rapidapi.com/title/get-videos';
@@ -43,6 +43,35 @@ const Showspage = () => {
 
     useEffect(()=>{
         //proper api calls
+        let originalSearch = async () => {
+            axios.get(baseShowUrl,{
+            
+              headers: {
+                'x-rapidapi-host': 'imdb8.p.rapidapi.com',
+                'x-rapidapi-key': apikey
+      
+              }
+            }).then((response) => {
+              console.log(JSON.stringify(response));
+              for(let x = 0; x < 8; x++){
+                shows.push(JSON.stringify(response.data[x].id.split('/')[2]));
+              }
+      
+              let delayedsearch = async (indexvalue) => {
+                await getShowData(baseUrl, shows[indexvalue]);
+              }
+      
+              for(let x = 0; x < 8; x++){
+                  setTimeout(()=>{
+                    delayedsearch(x);
+      
+                  }, 500 * x)
+              }
+            }).catch((error)=>{
+              console.error("error: " + error);
+            })
+          }
+          originalSearch();
 
        
     }, []);
