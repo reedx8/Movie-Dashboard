@@ -11,9 +11,9 @@ const Showspage = () => {
     
     const [showsObjects, setShowsObjects] = useState([]);
 
-    let getShowData = async (baseUrl, showid) => {
+    let getShowData = async (baseShowUrl, showid) => {
     
-        const response = axios.get(baseUrl,{
+        const response = axios.get(baseShowUrl,{
           params: {
             tconst: JSON.parse(showid),
             limit: '8',
