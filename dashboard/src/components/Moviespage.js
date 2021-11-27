@@ -10,6 +10,7 @@ const Moviespage = () => {
   
   const [movieObjects, setMovieObjects] = useState([]);
 
+
   let getMovieData = async (baseUrl, movieid) => {
     
     const response = axios.get(baseUrl,{
@@ -31,6 +32,9 @@ const Moviespage = () => {
           type: JSON.parse(JSON.stringify(response.data["resource"].titleType))
         }  
         setMovieObjects(movieObjects => [...movieObjects, newobject]);
+        if(movieObjects.length == 8){
+          setLoaded(true);
+        }
     }).catch((error)=>{
         console.error("secondary error: " + error);
     });
@@ -43,6 +47,7 @@ const Moviespage = () => {
 
 
   useEffect(() => {
+    
     //shoot for the id list
     let originalSearch = async () => {
       axios.get(baseUrlDetail,{
@@ -60,6 +65,8 @@ const Moviespage = () => {
 
         let delayedsearch = async (indexvalue) => {
           await getMovieData(baseUrl, movies[indexvalue]);
+          console.log("size: " + movieObjects.length)
+          
         }
 
         for(let x = 0; x < 8; x++){
@@ -73,6 +80,7 @@ const Moviespage = () => {
       })
     }
     originalSearch();
+    
   }, []);
 
   return (
@@ -84,8 +92,8 @@ const Moviespage = () => {
       <section id="newReleases">
         <h1>Best Pictures (Top 8)</h1>
         <div id="movieBox" style={{color: "white"}}>
-          {!movieObjects || movieObjects == undefined
-            ? "No movies right now"
+          {(!movieObjects || movieObjects == undefined) || movieObjects.length !== 8
+            ? "Loading Movies: Please wait..."
             : movieObjects.map((movie, key) => {
                 return (
                   <div key={key} className="newReleaseMovie">

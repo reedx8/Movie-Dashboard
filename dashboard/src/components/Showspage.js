@@ -85,8 +85,8 @@ const Showspage = () => {
             <section id="newReleases">
                 <h1>Shows (Top 8)</h1>
                 <div id="showBox" style={{color: "white"}}>
-                {!showsObjects || showsObjects == undefined
-                    ? "No shows right now"
+                {(!showsObjects || showsObjects == undefined) || showsObjects.length !== 8
+                    ? "Loading Shows: Please wait..."
                     : showsObjects.map((show, key) => {
                         return (
                         <div key={key} className="newReleaseShow">
