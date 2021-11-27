@@ -1,5 +1,6 @@
 import React from "react";
 import Sidebar from "./components/Sidebar";
+
 import Homepage from "./components/Homepage";
 import Moviespage from "./components/Moviespage";
 import Showspage from "./components/Showspage";

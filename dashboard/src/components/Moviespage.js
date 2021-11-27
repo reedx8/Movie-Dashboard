@@ -5,8 +5,7 @@ import axios from "axios";
 
 import "./Moviespage.css";
 const Moviespage = () => {
-
-
+  
   let movies = [];
   
   const [movieObjects, setMovieObjects] = useState([]);
