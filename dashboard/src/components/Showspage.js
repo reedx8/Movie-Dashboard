@@ -54,7 +54,7 @@ const Showspage = () => {
             }).then((response) => {
               console.log(JSON.stringify(response));
               for(let x = 0; x < 8; x++){
-                shows.push(JSON.stringify(response.data[x].id.split('/')[2]));
+                shows.push(JSON.stringify(response.data[x].split('/')[2]));
               }
       
               let delayedsearch = async (indexvalue) => {
