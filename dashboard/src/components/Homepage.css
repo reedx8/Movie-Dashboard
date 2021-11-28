@@ -56,6 +56,14 @@ h2 {
 .topRated {
   grid-column: 6 / 8;
   grid-row: 2 / 7;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-evenly; */
+}
+.TRcontent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .movieInfo {
   flex-basis: 100px;
@@ -117,7 +125,7 @@ h2 {
   vertical-align: middle;
 }
 .TRbox {
-  margin: 0vh 1.1vw;
+  margin: 0 1.1vw;
 }
 .TRtitlerow {
   display: flex;
