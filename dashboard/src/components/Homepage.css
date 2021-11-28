@@ -24,7 +24,8 @@
   border-style: solid;
   border-width: 0px;
   border-radius: 10px;
-  background: rgba(18, 18, 18, 0.7); /*rgba value is offBlack*/
+  /* rgba value is offBlack */
+  background: rgba(18, 18, 18, 0.7);
   margin: 5px;
 }
 
@@ -46,7 +47,7 @@ h2 {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: baseline;
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
 .comingSoon {
   grid-column: 1 / 8;
@@ -61,19 +62,21 @@ h2 {
   flex-grow: 10px;
   flex-shrink: 10px;
   padding: 8px;
-  /* border-radius: 5px; */
   transition: transform 0.4s;
 }
 .movieInfo:hover {
   /* background-color: var(--offBlackLt); */
+  /* border-radius: 5px; */
   transform: scale(1.2);
+  cursor: pointer;
 }
 
 .header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 1vh;
+  margin-left: 1vw;
 }
 
 .movieTitle,
@@ -84,7 +87,7 @@ h2 {
   padding: 0;
 }
 .movieTitle {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: white;
   white-space: nowrap;
@@ -92,10 +95,11 @@ h2 {
   /* height: 40px; */
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: left;
 }
 
 .movieGenre {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: grey;
 }
 .totRating {
@@ -111,4 +115,72 @@ h2 {
   color: var(--yell);
   margin-right: 2px;
   vertical-align: middle;
+}
+.TRbox {
+  margin: 5px;
+}
+.TRtitlerow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.TRrating {
+  font-size: 0.9rem;
+  color: white;
+}
+.TRstarIcon {
+  color: var(--yell);
+  margin-right: 0.1vw;
+  vertical-align: middle;
+}
+.TRrank {
+  font-size: 0.8rem;
+}
+.TRplayicon {
+  margin-right: 5px;
+  vertical-align: middle;
+  font-size: 1.3rem;
+  color: grey;
+  /* color: var(--yell); */
+}
+.TRbuttonrow {
+  /* background-color: var(--offBlackLt); */
+  display: flex;
+  justify-content: space-evenly;
+  /* margin-top: 10px; */
+}
+.TRtrailerbutton {
+  background-color: transparent;
+  border: none;
+  color: white;
+  /* color: var(--yell); */
+  /* padding: 1vh 2vw; */
+}
+.TRtrailerbutton:hover {
+  background-color: var(--offBlackLt);
+  border-radius: 5px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+.TRshowtimebutton {
+  background-color: transparent;
+  border: none;
+  color: white;
+  /* color: var(--yell); */
+  /* padding: 1vh 2vw; */
+}
+.TRshowtimebutton:hover {
+  background-color: var(--offBlackLt);
+  border-radius: 5px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+.TRshowtimeicon {
+  margin-right: 5px;
+  vertical-align: middle;
+  font-size: 1.4rem;
+  color: var(--blue);
+}
+.rankLine {
+  color: var(--yell);
 }
