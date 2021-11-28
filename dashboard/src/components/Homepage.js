@@ -3,6 +3,13 @@ import "./Homepage.css";
 import Seemorebutton from "./Seemorebutton";
 import { IconContext } from "react-icons";
 import { AiFillStar } from "react-icons/ai";
+import { BiPlayCircle } from "react-icons/bi";
+import {
+  BsPlayCircleFill,
+  BsFillPlayBtnFill,
+  BsFillPlayFill,
+} from "react-icons/bs";
+import { IoTicketOutline, IoTicket } from "react-icons/io5";
 const axios = require("axios");
 
 export default function Homepage() {
@@ -177,6 +184,143 @@ function TopRated() {
       <div className="header">
         <div className="title">
           <h2>Top Rated</h2>
+        </div>
+      </div>
+      <div className="TRcontent">
+        <div className="TRbox">
+          <div className="TRtitlerow">
+            <p className="TRrank">
+              1 <span className="rankLine">|</span> Planet Earth II
+            </p>
+            <p className="TRrating">
+              <IconContext.Provider value={{ className: "TRstarIcon" }}>
+                <AiFillStar />
+              </IconContext.Provider>
+              9.5<span className="totRating">/10</span>
+            </p>
+          </div>
+          <div className="TRbuttonrow">
+            <button className="TRtrailerbutton">
+              <IconContext.Provider value={{ className: "TRplayicon" }}>
+                <BsFillPlayFill />
+                Trailer
+              </IconContext.Provider>
+            </button>
+            <button className="TRshowtimebutton">
+              <IconContext.Provider value={{ className: "TRshowtimeicon" }}>
+                <IoTicket />
+                Showtimes
+              </IconContext.Provider>
+            </button>
+          </div>
+        </div>
+        <div className="TRbox">
+          <div className="TRtitlerow">
+            <p className="TRrank">
+              2 <span className="rankLine">|</span> Breaking Bad
+            </p>
+            <p className="TRrating">
+              <IconContext.Provider value={{ className: "TRstarIcon" }}>
+                <AiFillStar />
+              </IconContext.Provider>
+              9.4<span className="totRating">/10</span>
+            </p>
+          </div>
+          <div className="TRbuttonrow">
+            <button className="TRtrailerbutton">
+              <IconContext.Provider value={{ className: "TRplayicon" }}>
+                <BsFillPlayFill />
+                Trailer
+              </IconContext.Provider>
+            </button>
+            <button className="TRshowtimebutton">
+              <IconContext.Provider value={{ className: "TRshowtimeicon" }}>
+                <IoTicket />
+                Showtimes
+              </IconContext.Provider>
+            </button>
+          </div>
+        </div>
+        <div className="TRbox">
+          <div className="TRtitlerow">
+            <p className="TRrank">
+              3 <span className="rankLine">|</span> Game of Thrones
+            </p>
+            <p className="TRrating">
+              <IconContext.Provider value={{ className: "TRstarIcon" }}>
+                <AiFillStar />
+              </IconContext.Provider>
+              9.2<span className="totRating">/10</span>
+            </p>
+          </div>
+          <div className="TRbuttonrow">
+            <button className="TRtrailerbutton">
+              <IconContext.Provider value={{ className: "TRplayicon" }}>
+                <BsFillPlayFill />
+                Trailer
+              </IconContext.Provider>
+            </button>
+            <button className="TRshowtimebutton">
+              <IconContext.Provider value={{ className: "TRshowtimeicon" }}>
+                <IoTicket />
+                Showtimes
+              </IconContext.Provider>
+            </button>
+          </div>
+        </div>
+        <div className="TRbox">
+          <div className="TRtitlerow">
+            <p className="TRrank">
+              4 <span className="rankLine">|</span> The Godfather
+            </p>
+            <p className="TRrating">
+              <IconContext.Provider value={{ className: "TRstarIcon" }}>
+                <AiFillStar />
+              </IconContext.Provider>
+              9.1<span className="totRating">/10</span>
+            </p>
+          </div>
+          <div className="TRbuttonrow">
+            <button className="TRtrailerbutton">
+              <IconContext.Provider value={{ className: "TRplayicon" }}>
+                <BsFillPlayFill />
+                Trailer
+              </IconContext.Provider>
+            </button>
+            <button className="TRshowtimebutton">
+              <IconContext.Provider value={{ className: "TRshowtimeicon" }}>
+                <IoTicket />
+                Showtimes
+              </IconContext.Provider>
+            </button>
+          </div>
+        </div>
+        <div className="TRbox">
+          <div className="TRtitlerow">
+            <p className="TRrank">
+              5 <span className="rankLine">|</span> The Dark Knight
+            </p>
+            <p className="TRrating">
+              <IconContext.Provider value={{ className: "TRstarIcon" }}>
+                <AiFillStar />
+              </IconContext.Provider>
+              9.0<span className="totRating">/10</span>
+            </p>
+          </div>
+          <div className="TRbuttonrow">
+            <button className="TRtrailerbutton">
+              <IconContext.Provider value={{ className: "TRplayicon" }}>
+                <BsFillPlayFill />
+                Trailer
+              </IconContext.Provider>
+            </button>
+            <button className="TRshowtimebutton">
+              <IconContext.Provider value={{ className: "TRshowtimeicon" }}>
+                <IoTicket />
+                Showtimes
+              </IconContext.Provider>
+            </button>
+          </div>
         </div>
       </div>
     </section>
