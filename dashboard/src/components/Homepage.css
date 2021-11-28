@@ -30,9 +30,9 @@
 }
 
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin: 0;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   font-weight: 100;
   letter-spacing: 0.4vw;
   color: var(--yell);
@@ -117,7 +117,7 @@ h2 {
   vertical-align: middle;
 }
 .TRbox {
-  margin: 5px;
+  margin: 0vh 1.1vw;
 }
 .TRtitlerow {
   display: flex;

@@ -216,7 +216,34 @@ function TopRated() {
       <div className="TRbox">
         <div className="TRtitlerow">
           <p className="TRrank">
-            2 <span className="rankLine">|</span> The Shawshank Redemption
+            2 <span className="rankLine">|</span> Breaking Bad
+          </p>
+          <p className="TRrating">
+            <IconContext.Provider value={{ className: "TRstarIcon" }}>
+              <AiFillStar />
+            </IconContext.Provider>
+            9.4<span className="totRating">/10</span>
+          </p>
+        </div>
+        <div className="TRbuttonrow">
+          <button className="TRtrailerbutton">
+            <IconContext.Provider value={{ className: "TRplayicon" }}>
+              <BsFillPlayFill />
+              Trailer
+            </IconContext.Provider>
+          </button>
+          <button className="TRshowtimebutton">
+            <IconContext.Provider value={{ className: "TRshowtimeicon" }}>
+              <IoTicket />
+              Showtimes
+            </IconContext.Provider>
+          </button>
+        </div>
+      </div>
+      <div className="TRbox">
+        <div className="TRtitlerow">
+          <p className="TRrank">
+            3 <span className="rankLine">|</span> Game of Thrones
           </p>
           <p className="TRrating">
             <IconContext.Provider value={{ className: "TRstarIcon" }}>
@@ -243,40 +270,13 @@ function TopRated() {
       <div className="TRbox">
         <div className="TRtitlerow">
           <p className="TRrank">
-            3 <span className="rankLine">|</span> Cosmos: A Spacetime Odyssey
+            4 <span className="rankLine">|</span> The Godfather
           </p>
           <p className="TRrating">
             <IconContext.Provider value={{ className: "TRstarIcon" }}>
               <AiFillStar />
             </IconContext.Provider>
-            9.2<span className="totRating">/10</span>
-          </p>
-        </div>
-        <div className="TRbuttonrow">
-          <button className="TRtrailerbutton">
-            <IconContext.Provider value={{ className: "TRplayicon" }}>
-              <BsFillPlayFill />
-              Trailer
-            </IconContext.Provider>
-          </button>
-          <button className="TRshowtimebutton">
-            <IconContext.Provider value={{ className: "TRshowtimeicon" }}>
-              <IoTicket />
-              Showtimes
-            </IconContext.Provider>
-          </button>
-        </div>
-      </div>
-      <div className="TRbox">
-        <div className="TRtitlerow">
-          <p className="TRrank">
-            4 <span className="rankLine">|</span> Game of Thrones
-          </p>
-          <p className="TRrating">
-            <IconContext.Provider value={{ className: "TRstarIcon" }}>
-              <AiFillStar />
-            </IconContext.Provider>
-            9.2<span className="totRating">/10</span>
+            9.1<span className="totRating">/10</span>
           </p>
         </div>
         <div className="TRbuttonrow">
