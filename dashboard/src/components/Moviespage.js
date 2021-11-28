@@ -7,9 +7,32 @@ import "./Moviespage.css";
 const Moviespage = () => {
   
   let movies = [];
+  let plotline = 'https://imdb8.p.rapidapi.com/title/get-plots';
   
-  const [movieObjects, setMovieObjects] = useState([]);
+  const [movieObjects, setMovieObjects] = useState([]); 
+  const [ids, setIds] = useState([]);
 
+  let getIndividualMovieData = async (plotline, movieid) => {
+   
+    const response = axios.get(plotline,{
+      params: {
+        tconst: JSON.parse(movieid),
+      },
+      headers: {
+        'x-rapidapi-host': 'imdb8.p.rapidapi.com',
+        'x-rapidapi-key': apikey
+
+      }
+
+    }).then(response => {
+     
+      setMovieObjects(movieObjects.map( movie => movie.id === JSON.parse(movieid) ? {...movie, flipped: !movie.flipped, plot: JSON.stringify(response.data["plots"][0].text)} : movie))
+
+    }).catch(error => {
+      console.log("error: " + error);
+
+    })
+  }
 
   let getMovieData = async (baseUrl, movieid) => {
     
@@ -26,29 +49,30 @@ const Moviespage = () => {
       }
     }).then((response) => {
         let newobject = {
+          id: JSON.parse(movieid),
+          flipped: false,
+          plot: "",
           title: JSON.parse(JSON.stringify(response.data["resource"].title)),
           imgsrc: response.data["resource"].image.url,
           year: JSON.stringify(response.data["resource"].year),
           type: JSON.parse(JSON.stringify(response.data["resource"].titleType))
         }  
         setMovieObjects(movieObjects => [...movieObjects, newobject]);
-        if(movieObjects.length == 8){
-          setLoaded(true);
-        }
+       
     }).catch((error)=>{
         console.error("secondary error: " + error);
     });
   }
 
   let baseUrlDetail = 'https://imdb8.p.rapidapi.com/title/get-best-picture-winners';
-  //let baseUrlDetail = 'https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows';
+
   let baseUrl = 'https://imdb8.p.rapidapi.com/title/get-videos';
-  let apikey = '0d06046b1emsh0ee30cdd2f84aa0p181203jsn4b2a464c1844';
+  let apikey = 'e135928549msh1209028a5caa461p1fdc8fjsn10334e907635';
 
 
   useEffect(() => {
     
-    //shoot for the id list
+  
     let originalSearch = async () => {
       axios.get(baseUrlDetail,{
       
@@ -61,10 +85,12 @@ const Moviespage = () => {
         console.log(JSON.stringify(response));
         for(let x = 0; x < 8; x++){
           movies.push(JSON.stringify(response.data[x].split('/')[2]));
+          
         }
 
         let delayedsearch = async (indexvalue) => {
           await getMovieData(baseUrl, movies[indexvalue]);
+          setIds(ids => [...ids, movies[indexvalue]])
           console.log("size: " + movieObjects.length)
           
         }
@@ -83,6 +109,14 @@ const Moviespage = () => {
     
   }, []);
 
+  let getshowdata = (movieid) => {
+
+    setMovieObjects(movieObjects.map((moviex) => 
+      moviex.id === movieid ? {...moviex, flipped: !moviex.flipped} : moviex
+    ))
+    
+  }
+
   return (
     <div className="moviespage">
       <div id="searchContainer">
@@ -96,9 +130,23 @@ const Moviespage = () => {
             ? "Loading Movies: Please wait..."
             : movieObjects.map((movie, key) => {
                 return (
-                  <div key={key} className="newReleaseMovie">
-                    <span className="rating">{key + 1}</span>
-                    <img className="newReleaseImg" src={movie.imgsrc} alt={key + "s poster"}></img>              
+                  <div key={key} className="newReleaseMovie" onClick={(e)=>{
+                    e.preventDefault();
+                    
+                    getshowdata(movie.id);
+                    let movieId = ids[key];
+                    
+                    {!movie.flipped && getIndividualMovieData(plotline, movieId)};
+   
+                  }}>
+                    {!movie.flipped && <span className="rating">{key + 1}</span> }
+                    
+                    {!movie.flipped
+                     ?
+                     <img className="newReleaseImg" src={movie.imgsrc} alt={key + "s poster"}></img>
+                     :
+                     <div className="newDescription">{!movie.plot || movie.plot.length == 0 ? "Loading..." : movie.plot}</div>}   
+                    
                     <h2 className="yeardisc">{movie.year} - {movie.type}</h2>
                     <h3 className="classich3">{movie.title}</h3>
                   </div>

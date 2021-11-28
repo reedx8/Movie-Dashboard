@@ -61,7 +61,7 @@ const Showspage = () => {
                 await getShowData(baseUrl, shows[indexvalue]);
               }
       
-              for(let x = 0; x < 8; x++){
+              for(let x = 0; x < 1; x++){
                   setTimeout(()=>{
                     delayedsearch(x);
       
@@ -85,7 +85,7 @@ const Showspage = () => {
             <section id="newReleases">
                 <h1>Shows (Top 8)</h1>
                 <div id="showBox" style={{color: "white"}}>
-                {(!showsObjects || showsObjects == undefined) || showsObjects.length !== 8
+                {(!showsObjects || showsObjects == undefined) || showsObjects.length !== 1
                     ? "Loading Shows: Please wait..."
                     : showsObjects.map((show, key) => {
                         return (
