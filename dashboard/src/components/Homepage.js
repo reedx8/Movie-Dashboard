@@ -42,7 +42,8 @@ function MostPopular() {
         headers: {
           "x-rapidapi-host": "imdb8.p.rapidapi.com",
           "x-rapidapi-key":
-            "923c367cdbmsh6ea785496f3c985p1af000jsn90cc9c8b8e53",
+            // "923c367cdbmsh6ea785496f3c985p1af000jsn90cc9c8b8e53",
+            "10b706d841mshd8df930f4b01e45p1eb5a1jsncd3b1c89a8a0",
         },
       };
       let data;
@@ -89,7 +90,8 @@ function MostPopular() {
         headers: {
           "x-rapidapi-host": "imdb8.p.rapidapi.com",
           "x-rapidapi-key":
-            "923c367cdbmsh6ea785496f3c985p1af000jsn90cc9c8b8e53",
+            // "923c367cdbmsh6ea785496f3c985p1af000jsn90cc9c8b8e53",
+            "10b706d841mshd8df930f4b01e45p1eb5a1jsncd3b1c89a8a0",
         },
       };
 
