@@ -10,6 +10,7 @@ import {
   BsFillPlayFill,
 } from "react-icons/bs";
 import { IoTicketOutline, IoTicket } from "react-icons/io5";
+
 const axios = require("axios");
 
 export default function Homepage() {
@@ -102,7 +103,7 @@ function MostPopular() {
         console.error("Movie Info 2 Axios Call ERROR: ", error);
       }
 
-      // Turn movie object into an array
+      // Turn movie object data2 into an array temp2
       let temp2 = [];
       let j = 0;
       for (const key in data2) {
@@ -152,9 +153,10 @@ function MostPopular() {
                       src={movie[0]}
                       alt="poster"
                       style={{
-                        width: "9vw",
-                        maxWidth: "130px",
-                        minWidth: "70px",
+                        width: "110px",
+                        // width: "9vw",
+                        // maxWidth: "130px",
+                        // minWidth: "70px",
                         borderRadius: "3px",
                       }}
                     />
@@ -328,6 +330,23 @@ function TopRated() {
 }
 
 function ComingSoon() {
+  const [films, setFilms] = React.useState([
+    ["/images/comingsoon/expanse.jpg", "The Expanse (Sn. 6)", "Dec 10, 2021"],
+    ["/images/comingsoon/sing.jpg", "Sing 2", "Dec 22, 2021"],
+    [
+      "/images/comingsoon/matrix.jpg",
+      "The Matrix Resurrections",
+      "Dec 22, 2021",
+    ],
+    [
+      "/images/comingsoon/dragons.jpg",
+      "Dragons: The Nine Realms",
+      "Dec 23, 2021",
+    ],
+    ["/images/comingsoon/boba.jpg", "The Book of Boba Fett", "Dec 29, 2021"],
+    ["/images/comingsoon/scream.jpg", "Scream", "Jan 14, 2022"],
+  ]);
+
   return (
     <section className="comingSoon">
       <div className="header">
@@ -337,6 +356,26 @@ function ComingSoon() {
         <div className="custButton">
           <Seemorebutton />
         </div>
+      </div>
+      <div className="CScontent">
+        {films.map((film, key) => {
+          return (
+            <div className="CSbox" key={key}>
+              <div className="moviePoster">
+                <img
+                  src={film[0]}
+                  alt="poster"
+                  style={{
+                    width: "110px",
+                    borderRadius: "3px",
+                  }}
+                />
+              </div>
+              <h3 className="movieTitle">{film[1]}</h3>
+              <p className="movieDate">{film[2]}</p>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
