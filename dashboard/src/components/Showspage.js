@@ -1,4 +1,3 @@
-
 /*Author: Austin Britton*/
 import React from "react";
 import { useEffect, useState } from "react";
@@ -12,12 +11,13 @@ const Showspage = () => {
     let shows = [];
     const [showsObjects, setShowsObjects] = useState([]);
     const [ids, setIds] = useState([]);
+    const [searchString, setSearchString] = useState("");
+    const [insearch, setInsearch] = useState(false);
     
     let plotline = 'https://imdb8.p.rapidapi.com/title/get-plots';
-
     let baseUrl = 'https://imdb8.p.rapidapi.com/title/get-videos';
     let baseShowUrl = 'https://imdb8.p.rapidapi.com/title/get-most-popular-tv-shows';
-    let apikey = 'e135928549msh1209028a5caa461p1fdc8fjsn10334e907635';
+    let apikey = 'e54ace058amshb3046adff5a9a9cp10a2b3jsnb6e062ae922b';
 
     let getIndividualShowData = async (plotline, showid) => {
    
@@ -43,7 +43,7 @@ const Showspage = () => {
 
 
     let getShowData = async (baseUrl, showid) => {
-      alert("show id: " + showid);
+    
         const response = axios.get(baseUrl,{
           params: {
             tconst: JSON.parse(showid),
@@ -60,6 +60,7 @@ const Showspage = () => {
               id: JSON.parse(showid),
               flipped: false,
               plot: "",
+              display: true,
               title: JSON.parse(JSON.stringify(response.data["resource"].title)),
               imgsrc: response.data["resource"].image.url,
               year: JSON.stringify(response.data["resource"].year),
@@ -71,6 +72,12 @@ const Showspage = () => {
         });
     }
 
+    let getSearchedValue = (searchString) => {
+      setInsearch(true);
+      setShowsObjects(showsObjects.map((showx) => 
+        showx.title !== searchString ? {...showx, display: false} : showx
+      ))
+    }
 
     useEffect(()=>{
         //proper api calls
@@ -106,7 +113,6 @@ const Showspage = () => {
           }
           originalSearch();
 
-       
     }, []);
 
     let getshowdata = (showid) => {
@@ -117,18 +123,43 @@ const Showspage = () => {
       
     }
 
+    let clearSearchedValue = () => {
+
+      setInsearch(false);
+      setShowsObjects(showsObjects.map((showx) => 
+        showx ? {...showx, display: true} : showx
+      ))
+
+    }
+
     return (
         <div className="showspage">
             <div id="searchContainer">
                 <label id="searchlabel" forhtml="searchinput" title="searchinput" aria-label='searchinput'>Search Shows </label>
-                <input id="searchinput" type="text" name="searchinput" placeholder="Search..." />
+                <input id="searchinput" type="text" name="searchinput" onChange={(e)=>{
+                    e.preventDefault();
+                    setSearchString(e.target.value)
+                }} value={searchString}/>
+                { !insearch ? <button id={'buttonclass'} onClick={(e)=>{
+                    e.preventDefault();
+                    
+                    getSearchedValue(searchString);
+                    setSearchString("")
+                    }}>Find</button> : <button id={'buttonclass'} onClick={(e)=>{
+                      e.preventDefault();
+                     
+                      clearSearchedValue();
+                      setSearchString("")
+                      }}>Clear</button>}
+
+                
             </div>
             <section id="newReleases">
                 <h1>Shows (Top 8)</h1>
                 <div id="showBox" style={{color: "white"}}>
                 {(!showsObjects || showsObjects == undefined) || showsObjects.length !== 1
                     ? "Loading Shows: Please wait..."
-                    : showsObjects.map((show, key) => {
+                    : showsObjects.filter(showz => showz.display).map((show, key) => {
                         return (
                         <div key={key} className="newReleaseShow" onClick={(e)=>{
                           e.preventDefault();
