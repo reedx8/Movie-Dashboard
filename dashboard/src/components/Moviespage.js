@@ -11,6 +11,8 @@ const Moviespage = () => {
   
   const [movieObjects, setMovieObjects] = useState([]); 
   const [ids, setIds] = useState([]);
+  const [searchString, setSearchString] = useState("");
+  const [insearch, setInsearch] = useState(false);
 
   let getIndividualMovieData = async (plotline, movieid) => {
    
@@ -52,6 +54,7 @@ const Moviespage = () => {
           id: JSON.parse(movieid),
           flipped: false,
           plot: "",
+          display: true,
           title: JSON.parse(JSON.stringify(response.data["resource"].title)),
           imgsrc: response.data["resource"].image.url,
           year: JSON.stringify(response.data["resource"].year),
@@ -67,8 +70,14 @@ const Moviespage = () => {
   let baseUrlDetail = 'https://imdb8.p.rapidapi.com/title/get-best-picture-winners';
 
   let baseUrl = 'https://imdb8.p.rapidapi.com/title/get-videos';
-  let apikey = 'e135928549msh1209028a5caa461p1fdc8fjsn10334e907635';
+  let apikey = 'e54ace058amshb3046adff5a9a9cp10a2b3jsnb6e062ae922b';
 
+  let getSearchedValue = (searchString) => {
+    setInsearch(true);
+    setMovieObjects(movieObjects.map((moviex) => 
+      moviex.title !== searchString ? {...moviex, display: false} : moviex
+    ))
+  }
 
   useEffect(() => {
     
@@ -117,18 +126,41 @@ const Moviespage = () => {
     
   }
 
+  let clearSearchedValue = () => {
+
+    setInsearch(false);
+    setMovieObjects(movieObjects.map((moviex) => 
+      moviex ? {...moviex, display: true} : moviex
+    ))
+
+  }
+
   return (
     <div className="moviespage">
       <div id="searchContainer">
         <label id="searchlabel" forhtml="searchinput" title="searchinput" aria-label='searchinput'>Search Movies </label>
-        <input id="searchinput" type="text" name="searchinput" placeholder="Search..." />
+        <input id="searchinput" type="text" name="searchinput" onChange={(e)=>{
+          e.preventDefault();
+          setSearchString(e.target.value)
+        }} value={searchString}/>
+        { !insearch ? <button id={'buttonclass'} onClick={(e)=>{
+          e.preventDefault();
+          
+          getSearchedValue(searchString);
+          setSearchString("")
+          }}>Find</button> : <button id={'buttonclass'} onClick={(e)=>{
+            e.preventDefault();
+            
+            clearSearchedValue();
+            setSearchString("")
+            }}>Clear</button>}
       </div>
       <section id="newReleases">
         <h1>Best Pictures (Top 8)</h1>
         <div id="movieBox" style={{color: "white"}}>
           {(!movieObjects || movieObjects == undefined) || movieObjects.length !== 8
             ? "Loading Movies: Please wait..."
-            : movieObjects.map((movie, key) => {
+            : movieObjects.filter(moviez => moviez.display == true).map((movie, key) => {
                 return (
                   <div key={key} className="newReleaseMovie" onClick={(e)=>{
                     e.preventDefault();

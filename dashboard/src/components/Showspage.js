@@ -101,7 +101,7 @@ const Showspage = () => {
                 console.log("size: " + showsObjects.length);
               }
       
-              for(let x = 0; x < 1; x++){
+              for(let x = 0; x < 8; x++){
                   setTimeout(()=>{
                     delayedsearch(x);
       
@@ -157,7 +157,7 @@ const Showspage = () => {
             <section id="newReleases">
                 <h1>Shows (Top 8)</h1>
                 <div id="showBox" style={{color: "white"}}>
-                {(!showsObjects || showsObjects == undefined) || showsObjects.length !== 1
+                {(!showsObjects || showsObjects == undefined) || showsObjects.length !== 8
                     ? "Loading Shows: Please wait..."
                     : showsObjects.filter(showz => showz.display).map((show, key) => {
                         return (
