@@ -100,9 +100,10 @@ h2{
 .newReleaseShow{
     
     background: linear-gradient(.38turn,#000000 88%,#f5c518); 
-    
+    width: 250px;
+    height: 400px;
     min-width: 250px;
-   
+
     border-radius: 5px;    
     grid-row: auto;
     display: grid;  
@@ -116,6 +117,7 @@ h2{
     cursor: pointer;
     border: 5px solid var(--yell);
     border-radius: 5px;
+    width: 260px;
  }
 
 
@@ -142,6 +144,15 @@ img{
 
 .newReleaseImg{
     width: 100%;
+    height: 320px;
+}
+
+
+.newDescription{
+    width: 100%;
+    height: 320px;
+    text-align: center;
+    font-size: 18px;   
 }
 
 h3 {
