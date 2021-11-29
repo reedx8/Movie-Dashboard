@@ -32,10 +32,7 @@ const Showspage = () => {
         }
   
       }).then(response => {
-        for(let item in response.data){
-          console.log(item + " => "+ response.data[item])
-
-        }
+        
         setShowsObjects(showsObjects.map( show => show.id === JSON.parse(showid) ? {...show, flipped: !show.flipped, plot: JSON.stringify(response.data["plots"][0].text)} : show))
   
       }).catch(error => {
