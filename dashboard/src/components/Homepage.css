@@ -12,14 +12,18 @@
   background-repeat: no-repeat;
   */
   color: lightgrey;
+  overflow-y: scroll;
 }
 .subgrid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   /* grid-template-rows: repeat(7, 1fr); */
-  grid-template-rows: 10vh 1fr 1fr 1fr 1fr 1fr 1fr;
-  width: 100%;
-  height: 100%;
+  grid-template-rows: 7vh 1fr 1fr 1fr 1fr 1fr 1fr;
+  /* width: 100%; */
+  /* height: 100%; */
+  /* overflow: hidden;
+  height: 100vh;
+  width: 100vw; */
 }
 .subgrid > * {
   border-style: solid;
