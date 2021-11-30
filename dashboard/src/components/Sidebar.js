@@ -50,7 +50,7 @@ export default function Sidebar() {
           >
             <IoAccessibility />
           </IconContext.Provider>
-          TV Shows
+          Authors
         </NavLink>
       </div>
     </div>

@@ -49,12 +49,9 @@
   }
 
   .photoguy{
-      width: 15vw;
-      height: 15vw;
-      min-width: 100px;
-      min-height: 100px;
-      max-width: 200px;
-      max-height: 200px;
+  
+      height: 150px;
+      width: 150px;
       justify-self: center;
       align-self: end;
       background-color: blue;
