@@ -2,7 +2,7 @@ import React from "react";
 import "./Sidebar.css";
 import { HiHome } from "react-icons/hi";
 import { MdLocalMovies } from "react-icons/md";
-import { IoTv } from "react-icons/io5";
+import { IoTv, IoAccessibility } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { Link, NavLink } from "react-router-dom";
 
@@ -41,6 +41,14 @@ export default function Sidebar() {
             value={{ className: "sidebarIcons", title: "TV shows page" }}
           >
             <IoTv />
+          </IconContext.Provider>
+          TV Shows
+        </NavLink>
+        <NavLink to="/authors" className="navlink" activeClassName="routeActive">
+          <IconContext.Provider
+            value={{ className: "sidebarIcons", title: "Authors page" }}
+          >
+            <IoAccessibility />
           </IconContext.Provider>
           TV Shows
         </NavLink>
