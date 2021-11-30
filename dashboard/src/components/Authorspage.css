@@ -54,12 +54,16 @@
       width: 150px;
       justify-self: center;
       align-self: end;
-      background-color: blue;
       border-radius: 100%;
+      
 
   }
 
-  
+  #brittonheadshot{
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+  }
 
   @media only screen and (max-width: 780px) {
 

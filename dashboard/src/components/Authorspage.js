@@ -1,5 +1,5 @@
 import React from 'react'
-
+import headshot from './authorbritton.jpg';
 import "./Authorspage.css";
 const Authorspage = () => {
     return (
@@ -22,7 +22,7 @@ const Authorspage = () => {
                         Computer Science Major with a passion for programming. 
                         Focused on AI/ML in the area of game theory / decision making in games without perfect imformation
                     </p>
-                    <div className={'photoguy'}><img alt="photoguy"></img></div>
+                    <div className={'photoguy'}><img id={"brittonheadshot"} src={headshot} alt="photoguy"></img></div>
                 </section>
             </div>
         
