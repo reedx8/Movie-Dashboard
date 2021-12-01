@@ -1,6 +1,8 @@
 # Movie-Dashboard
 
-Dashboard website using IMDb's API: https://rapidapi.com/apidojo/api/imdb8/
+Movie Dashboard using IMDb's API. 
+
+Demo -> https://rapidapi.com/apidojo/api/imdb8/
 
 ## Instructions:
 
@@ -10,11 +12,14 @@ Dashboard website using IMDb's API: https://rapidapi.com/apidojo/api/imdb8/
 
 ## Tech used:
 
+- IMDb API (https://rapidapi.com/apidojo/api/imdb8/)
+- Javascript / HTML / CSS
 - React
 - webfontloader (https://github.com/typekit/webfontloader)
 - react-icons (https://react-icons.github.io/react-icons/)
 - react-router v5 (https://v5.reactrouter.com/web/guides/quick-start) 
-- axios (https://www.npmjs.com/package/axios)
+- Axios (https://www.npmjs.com/package/axios)
+- Bootstrap
 
 ## Tutorials used:
 
