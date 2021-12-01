@@ -2,7 +2,7 @@
 
 Movie Dashboard using IMDb's API. 
 
-Demo -> https://rapidapi.com/apidojo/api/imdb8/
+Demo -> https://movie-dashboard-psu.netlify.app/
 
 ## Instructions:
 
