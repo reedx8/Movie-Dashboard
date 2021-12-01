@@ -11,6 +11,9 @@ export default function Sidebar() {
 
   return (
     <div className="sidebar">
+      <div className="logoContainer">
+        <img src="/images/logo.png" alt="logo" className="logo" />
+      </div>
       <div className="buttons">
         <NavLink
           to="/"
@@ -44,7 +47,11 @@ export default function Sidebar() {
           </IconContext.Provider>
           TV Shows
         </NavLink>
-        <NavLink to="/authors" className="navlink" activeClassName="routeActive">
+        <NavLink
+          to="/authors"
+          className="navlink"
+          activeClassName="routeActive"
+        >
           <IconContext.Provider
             value={{ className: "sidebarIcons", title: "Authors page" }}
           >
