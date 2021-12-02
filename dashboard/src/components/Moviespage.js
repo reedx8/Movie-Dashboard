@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import "./Moviespage.css";
+
+// displays all the movies from the API when navigating to the movies page
 const Moviespage = () => {
   let movies = [];
   let plotline = "https://imdb8.p.rapidapi.com/title/get-plots";

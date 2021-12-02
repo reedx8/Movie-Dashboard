@@ -5,6 +5,7 @@ import axios from "axios";
 
 import "./Showspage.css";
 
+// displays all the tv shows from the API when navigating to the tv shows page
 const Showspage = () => {
   let shows = [];
   const [showsObjects, setShowsObjects] = useState([]);

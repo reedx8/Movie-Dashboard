@@ -1,6 +1,7 @@
 import React from "react";
 import "./Seemorebutton.css";
 
+// displays the animated "more" button you see on homepage
 export default function Seemorebutton() {
   return (
     <button className="cta">
