@@ -6,6 +6,7 @@ import { IoTv, IoAccessibility } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { Link, NavLink } from "react-router-dom";
 
+// displays the sidebar for each page of the dashboard app
 export default function Sidebar() {
   const [active, setActive] = React.useState(false);
 
