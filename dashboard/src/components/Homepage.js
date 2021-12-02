@@ -13,6 +13,7 @@ import { IoTicketOutline, IoTicket } from "react-icons/io5";
 
 const axios = require("axios");
 
+// displays every section on homepage (most popular, top rated, and coming soon)
 export default function Homepage() {
   return (
     <div className="homepage">
@@ -25,6 +26,7 @@ export default function Homepage() {
   );
 }
 
+// Displays the most popular films on the homepage
 function MostPopular() {
   const [popMovies, setPopMovies] = React.useState([null]);
   const [movieInfo, setMovieInfo] = React.useState([]);
@@ -182,6 +184,7 @@ function MostPopular() {
   );
 }
 
+// displays the top rated titles to homepage
 function TopRated() {
   return (
     <section className="topRated">
@@ -331,6 +334,7 @@ function TopRated() {
   );
 }
 
+// displays the titles coming soon to the homepage
 function ComingSoon() {
   const [films, setFilms] = React.useState([
     ["/images/comingsoon/expanse.jpg", "The Expanse (Sn. 6)", "Dec 10, 2021"],

@@ -1,6 +1,8 @@
 import React from "react";
 import headshot from "./authorbritton.jpg";
 import "./Authorspage.css";
+
+// Displays the contributors to the project when navigating to the authors page
 const Authorspage = () => {
   return (
     <div className={"authorspage"}>

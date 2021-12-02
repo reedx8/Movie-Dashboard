@@ -8,6 +8,7 @@ import Authorspage from "./components/Authorspage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
+// The dashboards entry point, displays each of the pages depending on which route is selected by user
 function App() {
   return (
     <div className="App">
