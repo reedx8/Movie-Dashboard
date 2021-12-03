@@ -9,11 +9,15 @@ Xavier Reed -- 1464
 
 Austin Britton -- 805
 
+<img width="566" alt="Screen Shot 2021-12-02 at 5 19 37 PM" src="https://user-images.githubusercontent.com/29593134/144528984-51f6cdd5-842b-4b28-ab5d-b238a57f90fa.png">
+
 ## Number of commits per contributor:
 
 Xavier Reed -- 77
 
 Austin Britton -- 59
+
+<img width="459" alt="Screen Shot 2021-12-02 at 5 22 35 PM" src="https://user-images.githubusercontent.com/29593134/144528994-2022c060-21d9-499d-83eb-ddca9a04328f.png">
 
 
 ## Instructions:
