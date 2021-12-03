@@ -4,6 +4,18 @@ Movie Dashboard using IMDb's API.
 
 Demo -> https://movie-dashboard-psu.netlify.app/
 
+## Number of lines per contributor:
+Xavier Reed -- 1464
+
+Austin Britton -- 805
+
+## Number of commits per contributor:
+
+Xavier Reed -- 77
+
+Austin Britton -- 59
+
+
 ## Instructions:
 
 1. cd dashboard
